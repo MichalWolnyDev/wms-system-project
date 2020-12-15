@@ -12,7 +12,6 @@ namespace wms_project
 {
     public partial class Form1 : Form
     {
-        public string login = "";
         public Form1()
         {
             InitializeComponent();
@@ -25,8 +24,6 @@ namespace wms_project
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            
-            login = textBox1.Text;
 
            
         }
@@ -39,7 +36,34 @@ namespace wms_project
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Hello!");
-            MessageBox.Show(login);
+     
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PasswordInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ShowPwd.Checked == false)
+            {
+                PasswordInput.PasswordChar = '*';
+            } else
+            {
+                PasswordInput.PasswordChar = '\0';
+            }
+        }
+
+        private void ClearInputs_Click(object sender, EventArgs e)
+        {
+            UsernameInput.Text = "";
+            PasswordInput.Text = "";
         }
     }
 }
