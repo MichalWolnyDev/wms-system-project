@@ -35,7 +35,24 @@ namespace wms_project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hello!");
+            Users[] users = new Users[2];
+            users[0] = new Users();
+            users[1] = new Users();
+            users[0].setUsers("Admin", "qwerty", true);
+            users[1].setUsers("Magazynier", "magazyn1", false);
+       
+            if ((UsernameInput.Text == users[0].uname && PasswordInput.Text == users[0].upassword) || (UsernameInput.Text == users[1].uname && PasswordInput.Text == users[1].upassword))
+            {
+                new Form2().Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Niepoprawne dane logowania");
+                UsernameInput.Clear();
+                PasswordInput.Clear();
+                UsernameInput.Focus();
+            }
      
         }
 
@@ -64,6 +81,11 @@ namespace wms_project
         {
             UsernameInput.Text = "";
             PasswordInput.Text = "";
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }
