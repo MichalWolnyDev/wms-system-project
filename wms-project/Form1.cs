@@ -87,5 +87,10 @@ namespace wms_project
         {
             System.Windows.Forms.Application.Exit();
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
