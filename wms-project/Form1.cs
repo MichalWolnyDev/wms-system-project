@@ -57,7 +57,18 @@ namespace wms_project
              */
             Users users = new Users();
 
-            users.readUsers();
+            if (users.readUsers(UsernameInput.Text, PasswordInput.Text))
+            {
+                new Form2().Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Niepoprawne dane logowania");
+                UsernameInput.Clear();
+                PasswordInput.Clear();
+                UsernameInput.Focus();
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

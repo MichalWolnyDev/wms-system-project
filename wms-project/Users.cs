@@ -16,7 +16,7 @@ namespace wms_project
 
         private readonly string _path = $"C:\\Users\\kuba\\source\\repos\\wms-system-project\\users.json";
 
-        public void readUsers()
+        public bool readUsers(string name, string pwd)
         {
             try
             {
@@ -29,13 +29,30 @@ namespace wms_project
                 //Console.WriteLine(jsonFromFile);
 
                 var userFromJson = JsonConvert.DeserializeObject<List<User>>(jsonFromFile);
+
+                //Console.WriteLine(userFromJson.GetType());
+                //var test = userFromJson[0];
+                //Console.WriteLine(test.name);
+                //var test2 = userFromJson[1];
+                //Console.WriteLine(test2.name);
+                // UserJson p1 = userFromJson[0];
                 
-                Console.WriteLine(userFromJson.GetType());
-                var test = userFromJson[0];
-                Console.WriteLine(test.name);
-                var test2 = userFromJson[1];
-                Console.WriteLine(test2.name);
-               // UserJson p1 = userFromJson[0];
+                foreach (var item in userFromJson)
+                {
+                 
+                    if (item.name == name && item.password == pwd)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                  
+                }
+                return false;
+                
+                
 
                 // Console.WriteLine();
             }
@@ -47,7 +64,7 @@ namespace wms_project
 
         }
 
-       
+       // to wyjebac
         public void setUsers(string name, string password, bool isAdmin)
         {
             this.uname = name;
