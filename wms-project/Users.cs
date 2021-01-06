@@ -10,11 +10,8 @@ namespace wms_project
 {
     class Users
     {
-        public string uname;
-        public string upassword;
-        public bool isAdmin;
 
-        private readonly string _path = $"C:\\Users\\kuba\\source\\repos\\wms-system-project\\users.json";
+        private readonly string _path = $"C:\\Users\\Majkelo\\source\\repos\\wms-proj\\wms-project\\users.json";
 
         public bool readUsers(string name, string pwd)
         {
@@ -26,35 +23,28 @@ namespace wms_project
                     jsonFromFile = reader.ReadToEnd();
                 }
 
-                //Console.WriteLine(jsonFromFile);
 
                 var userFromJson = JsonConvert.DeserializeObject<List<User>>(jsonFromFile);
 
-                //Console.WriteLine(userFromJson.GetType());
+                Console.WriteLine(userFromJson.GetType());
                 //var test = userFromJson[0];
                 //Console.WriteLine(test.name);
                 //var test2 = userFromJson[1];
                 //Console.WriteLine(test2.name);
-                // UserJson p1 = userFromJson[0];
-                
+                // Console.WriteLine(userFromJson);
+                //UserJson p1 = userFromJson[0];
+
                 foreach (var item in userFromJson)
                 {
-                 
+                    
                     if (item.name == name && item.password == pwd)
                     {
                         return true;
                     }
-                    else
-                    {
-                        return false;
-                    }
-                  
+                                      
                 }
                 return false;
-                
-                
-
-                // Console.WriteLine();
+         
             }
             catch (Exception e)
             {
@@ -64,13 +54,7 @@ namespace wms_project
 
         }
 
-       // to wyjebac
-        public void setUsers(string name, string password, bool isAdmin)
-        {
-            this.uname = name;
-            this.upassword = password;
-            this.isAdmin = isAdmin;
-        }
+
     }
     public class UserJson
     {
