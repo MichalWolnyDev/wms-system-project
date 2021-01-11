@@ -8,6 +8,22 @@ using System.IO;
 
 namespace wms_project
 {
+    public class UserJson
+    {
+        [JsonProperty("users")]
+        public User User { get; set; }
+    }
+    public class User
+    {
+        [JsonProperty("id")]
+        public int id { get; set; }
+        [JsonProperty("name")]
+        public string name { get; set; }
+        [JsonProperty("password")]
+        public string password { get; set; }
+        [JsonProperty("isAdmin")]
+        public string isAdmin { get; set; }
+    }
     class Users
     {
 
@@ -15,14 +31,14 @@ namespace wms_project
 
         public bool readUsers(string name, string pwd)
         {
+            string jsonFromFile;
+
             try
             {
-                string jsonFromFile;
                 using (var reader = new StreamReader(_path))
                 {
                     jsonFromFile = reader.ReadToEnd();
                 }
-
 
                 var userFromJson = JsonConvert.DeserializeObject<List<User>>(jsonFromFile);
 
@@ -34,6 +50,7 @@ namespace wms_project
                 // Console.WriteLine(userFromJson);
                 //UserJson p1 = userFromJson[0];
 
+                // simple user validation
                 foreach (var item in userFromJson)
                 {
                     
@@ -56,20 +73,5 @@ namespace wms_project
 
 
     }
-    public class UserJson
-    {
-        [JsonProperty("users")]
-        public User User { get; set; }
-    }
-    public class User
-    {
-        [JsonProperty("id")]
-        public int id { get; set; }
-        [JsonProperty("name")]
-        public string name { get; set; }
-        [JsonProperty("password")]
-        public string password { get; set; }
-        [JsonProperty("isAdmin")]
-        public string isAdmin { get; set; }
-    }
+   
 }

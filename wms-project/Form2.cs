@@ -14,10 +14,14 @@ namespace wms_project
     {
         Form2 DataManipulation;
         DataManipulation datamnp = new DataManipulation();
+
         public Form2()
         {
+            this.Controls.Add(dataGridView1);
             InitializeComponent();
-            
+            InitializeDataGridView();
+
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -35,6 +39,8 @@ namespace wms_project
             if (!string.IsNullOrWhiteSpace(ItemName.Text))
             {
                 datamnp.addData(ItemName.Text);
+                // refresh dataGrid after adding some item
+                InitializeDataGridView();
                 MessageBox.Show("Dodano przedmiot");
             }
             else
@@ -45,9 +51,42 @@ namespace wms_project
         
         }
 
+        private void InitializeDataGridView()
+        {
+            try
+            {
+                var result = datamnp.displayData();
+                // Automatically generate the DataGridView columns.
+                dataGridView1.AutoGenerateColumns = true;
+
+                // Set up the data source.
+                dataGridView1.DataSource = result;
+
+                // Automatically resize the visible rows.
+                dataGridView1.AutoSizeRowsMode =
+                    DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+
+                // Set the DataGridView control's border.
+                dataGridView1.BorderStyle = BorderStyle.Fixed3D;
+
+                // Put the cells in edit mode when user enters them.
+                dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Błąd wyświetlania danych");
+                System.Threading.Thread.CurrentThread.Abort();
+            }
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        
         }
     }
 }

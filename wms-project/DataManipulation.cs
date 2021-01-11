@@ -22,23 +22,31 @@ namespace wms_project
         }
 
     }
+
+    public class JsonResult 
+    { 
+        public int id { get; set; }
+        public string name { get; set; }
+    }
     class DataManipulation
     {
         public string _path = $"C:\\Users\\Majkelo\\source\\repos\\wms-proj\\wms-project\\data.json";
         public void addData(string itemFromUser)
         {
+            string jsonFromFile;
+            int tempId = 0;
+            int itemId;
+            int i = 1;
             try
             {
-                string jsonFromFile;
-                int tempId = 0;
-                int itemId;
-                int i = 1;
                 using (var reader = new StreamReader(_path))
                 {
                     jsonFromFile = reader.ReadToEnd();
                 }
 
                 var list = JsonConvert.DeserializeObject<List<Items>>(jsonFromFile);
+
+                // help item counter
                 foreach (var item in list)
                 {
                     if (i == list.Count)
@@ -51,12 +59,32 @@ namespace wms_project
                     }
                     
                 }
+                //  id increment
                 itemId = tempId += 1;
                 list.Add(new Items(itemId, itemFromUser));
                 var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
 
                 File.WriteAllText(_path, convertedJson);
 
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public List<JsonResult> displayData()
+        {
+            string jsonFromFile;
+            try
+            {
+                using (var reader = new StreamReader(_path))
+                {
+                    jsonFromFile = reader.ReadToEnd();
+                }
+                var result = JsonConvert.DeserializeObject<List<JsonResult>>(jsonFromFile);
+                return result;
             }
             catch (Exception e)
             {

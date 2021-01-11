@@ -72,6 +72,7 @@ namespace wms_project
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            // toggle password visible
             if (ShowPwd.Checked == false)
             {
                 PasswordInput.PasswordChar = '*';
@@ -83,6 +84,7 @@ namespace wms_project
 
         private void ClearInputs_Click(object sender, EventArgs e)
         {
+            // clear inputs
             UsernameInput.Text = "";
             PasswordInput.Text = "";
         }
