@@ -27,7 +27,8 @@ namespace wms_project
     class Users
     {
 
-        private readonly string _path = $"C:\\Users\\Majkelo\\source\\repos\\wms-proj\\wms-project\\users.json";
+        //private readonly string _path = $"C:\\Users\\Majkelo\\source\\repos\\wms-proj\\wms-project\\users.json";
+        private readonly string _path = @".\users.json";
 
         public bool readUsers(string name, string pwd)
         {

@@ -14,11 +14,18 @@ namespace wms_project
         public int id { get; set; }
         [JsonProperty("name")]
         public string name { get; set; }
+        [JsonProperty("price")]
+        public string price { get; set; } 
+        [JsonProperty("description")]
+        public string description { get; set; }
 
-        public Items(int itemid, string itemname)
+        public Items(int itemid, string itemname, string itemprice, string itemdesc)
         {
             id = itemid;
             name = itemname;
+            price = itemprice;
+            description = itemdesc;
+
         }
 
     }
@@ -27,11 +34,17 @@ namespace wms_project
     { 
         public int id { get; set; }
         public string name { get; set; }
+        public string price { get; set; }
+        public string description { get; set; }
     }
     class DataManipulation
     {
-        public string _path = $"C:\\Users\\Majkelo\\source\\repos\\wms-proj\\wms-project\\data.json";
-        public void addData(string itemFromUser)
+        //public string _path = $"C:\\Users\\Majkelo\\source\\repos\\wms-proj\\wms-project\\data.json";
+        public string _path = @".\data.json";
+
+
+
+        public void addData(string itemFromUser, string itemPrice, string itemDescription)
         {
             string jsonFromFile;
             int tempId = 0;
@@ -61,7 +74,7 @@ namespace wms_project
                 }
                 //  id increment
                 itemId = tempId += 1;
-                list.Add(new Items(itemId, itemFromUser));
+                list.Add(new Items(itemId, itemFromUser, itemPrice, itemDescription));
                 var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
 
                 File.WriteAllText(_path, convertedJson);

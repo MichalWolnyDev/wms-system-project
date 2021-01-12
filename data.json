@@ -1,58 +1,25 @@
 [
   {
     "id": 0,
-    "name": "Ogorek"
+    "name": "Volvo C30",
+    "price": "10000",
+    "description": "Szybki samoch�d"
   },
   {
     "id": 1,
-    "name": "marchew"
+    "name": "TEST",
+    "price": "222222",
+    "description": "DASDASDASDS"
   },
   {
     "id": 2,
-    "name": "marchew"
-  },
-  {
+    "name": "Passat",
+    "price": "100 000",
+    "description": "Eksluzywna limuzyna"
+  }{
     "id": 3,
-    "name": "marchew"
-  },
-  {
-    "id": 4,
-    "name": "dupa"
-  },
-  {
-    "id": 5,
-    "name": "PATROLLAMA"
-  },
-  {
-    "id": 6,
-    "name": "test"
-  },
-  {
-    "id": 7,
-    "name": "Admin"
-  },
-  {
-    "id": 8,
-    "name": "Aadasdasdmin"
-  },
-  {
-    "id": 9,
-    "name": "tewssat"
-  },
-  {
-    "id": 10,
-    "name": "tewssat"
-  },
-  {
-    "id": 11,
-    "name": "testttttadasd"
-  },
-  {
-    "id": 12,
-    "name": "asdasdas"
-  },
-  {
-    "id": 13,
-    "name": "volvo"
+    "name": "Passat",
+    "price": "100 000",
+    "description": "Eksluzywna limuzyna"
   }
 ]

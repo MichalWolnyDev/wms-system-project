@@ -40,9 +40,13 @@ namespace wms_project
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.jsonResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.itemPrice = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.itemDescription = new System.Windows.Forms.TextBox();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jsonResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jsonResultBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -130,7 +134,7 @@ namespace wms_project
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(18, 156);
+            this.button1.Location = new System.Drawing.Point(21, 259);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 42);
             this.button1.TabIndex = 7;
@@ -144,12 +148,13 @@ namespace wms_project
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(99, 156);
+            this.button2.Location = new System.Drawing.Point(102, 259);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(84, 42);
             this.button2.TabIndex = 8;
             this.button2.Text = "Edit";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -157,16 +162,48 @@ namespace wms_project
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(189, 156);
+            this.button3.Location = new System.Drawing.Point(192, 259);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(86, 42);
             this.button3.TabIndex = 9;
             this.button3.Text = "Delete";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // jsonResultBindingSource
+            // itemPrice
             // 
-            this.jsonResultBindingSource.DataSource = typeof(wms_project.JsonResult);
+            this.itemPrice.Location = new System.Drawing.Point(18, 130);
+            this.itemPrice.Name = "itemPrice";
+            this.itemPrice.Size = new System.Drawing.Size(257, 20);
+            this.itemPrice.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 115);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Cena";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 153);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(28, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Opis";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // itemDescription
+            // 
+            this.itemDescription.Location = new System.Drawing.Point(18, 168);
+            this.itemDescription.Multiline = true;
+            this.itemDescription.Name = "itemDescription";
+            this.itemDescription.Size = new System.Drawing.Size(257, 85);
+            this.itemDescription.TabIndex = 12;
+            this.itemDescription.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -180,12 +217,20 @@ namespace wms_project
             this.nameDataGridViewTextBoxColumn.HeaderText = "name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             // 
+            // jsonResultBindingSource
+            // 
+            this.jsonResultBindingSource.DataSource = typeof(wms_project.JsonResult);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkKhaki;
             this.ClientSize = new System.Drawing.Size(938, 539);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.itemDescription);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.itemPrice);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -219,8 +264,12 @@ namespace wms_project
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource jsonResultBindingSource;
+        private System.Windows.Forms.TextBox itemPrice;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox itemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource jsonResultBindingSource;
     }
 }

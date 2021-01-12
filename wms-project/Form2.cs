@@ -36,9 +36,9 @@ namespace wms_project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(ItemName.Text))
+            if (!string.IsNullOrWhiteSpace(ItemName.Text) && !string.IsNullOrWhiteSpace(itemPrice.Text) && !string.IsNullOrWhiteSpace(itemDescription.Text))
             {
-                datamnp.addData(ItemName.Text);
+                datamnp.addData(ItemName.Text, itemPrice.Text, itemDescription.Text);
                 // refresh dataGrid after adding some item
                 InitializeDataGridView();
                 MessageBox.Show("Dodano przedmiot");
@@ -86,7 +86,27 @@ namespace wms_project
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-        
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }
