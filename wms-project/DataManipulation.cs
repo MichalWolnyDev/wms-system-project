@@ -74,6 +74,7 @@ namespace wms_project
                 }
                 //  id increment
                 itemId = tempId += 1;
+                
                 list.Add(new Items(itemId, itemFromUser, itemPrice, itemDescription));
                 var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
 
@@ -98,6 +99,31 @@ namespace wms_project
                 }
                 var result = JsonConvert.DeserializeObject<List<JsonResult>>(jsonFromFile);
                 return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public void removeData(int id)
+        {
+            string jsonFromFile;
+            try
+            {
+                using (var reader = new StreamReader(_path))
+                {
+                    jsonFromFile = reader.ReadToEnd();
+                }
+
+                var result = JsonConvert.DeserializeObject<List<JsonResult>>(jsonFromFile);
+                var itemToRemove = result.SingleOrDefault(r => r.id == id);
+                if (itemToRemove != null)
+                    result.Remove(itemToRemove);
+                var convertedJson = JsonConvert.SerializeObject(result, Formatting.Indented);
+                File.WriteAllText(_path, convertedJson);
+
             }
             catch (Exception e)
             {
