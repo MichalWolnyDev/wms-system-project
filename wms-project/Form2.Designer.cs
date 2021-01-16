@@ -47,11 +47,14 @@ namespace wms_project
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jsonResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jsonResultBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,8 +88,10 @@ namespace wms_project
             this.price,
             this.description});
             this.dataGridView1.DataSource = this.jsonResultBindingSource;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(312, 76);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(614, 439);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -96,16 +101,18 @@ namespace wms_project
             this.price.DataPropertyName = "price";
             this.price.HeaderText = "price";
             this.price.Name = "price";
+            this.price.ReadOnly = true;
             // 
             // description
             // 
             this.description.DataPropertyName = "description";
             this.description.HeaderText = "description";
             this.description.Name = "description";
+            this.description.ReadOnly = true;
             // 
             // ItemName
             // 
-            this.ItemName.Location = new System.Drawing.Point(18, 92);
+            this.ItemName.Location = new System.Drawing.Point(18, 136);
             this.ItemName.Name = "ItemName";
             this.ItemName.Size = new System.Drawing.Size(257, 20);
             this.ItemName.TabIndex = 5;
@@ -114,11 +121,11 @@ namespace wms_project
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 76);
+            this.label4.Location = new System.Drawing.Point(18, 120);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Nazwa";
+            this.label4.Text = "Item name";
             // 
             // button1
             // 
@@ -126,7 +133,7 @@ namespace wms_project
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(21, 259);
+            this.button1.Location = new System.Drawing.Point(21, 461);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 42);
             this.button1.TabIndex = 7;
@@ -140,7 +147,7 @@ namespace wms_project
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(102, 259);
+            this.button2.Location = new System.Drawing.Point(102, 461);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(84, 42);
             this.button2.TabIndex = 8;
@@ -154,7 +161,7 @@ namespace wms_project
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(192, 259);
+            this.button3.Location = new System.Drawing.Point(192, 461);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(86, 42);
             this.button3.TabIndex = 9;
@@ -164,7 +171,7 @@ namespace wms_project
             // 
             // itemPrice
             // 
-            this.itemPrice.Location = new System.Drawing.Point(18, 130);
+            this.itemPrice.Location = new System.Drawing.Point(18, 174);
             this.itemPrice.Name = "itemPrice";
             this.itemPrice.Size = new System.Drawing.Size(257, 20);
             this.itemPrice.TabIndex = 10;
@@ -172,26 +179,26 @@ namespace wms_project
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 115);
+            this.label5.Location = new System.Drawing.Point(18, 159);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Cena";
+            this.label5.Text = "Price";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 153);
+            this.label6.Location = new System.Drawing.Point(18, 197);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 13);
+            this.label6.Size = new System.Drawing.Size(60, 13);
             this.label6.TabIndex = 13;
-            this.label6.Text = "Opis";
+            this.label6.Text = "Description";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // itemDescription
             // 
-            this.itemDescription.Location = new System.Drawing.Point(18, 168);
+            this.itemDescription.Location = new System.Drawing.Point(18, 212);
             this.itemDescription.Multiline = true;
             this.itemDescription.Name = "itemDescription";
             this.itemDescription.Size = new System.Drawing.Size(257, 85);
@@ -226,7 +233,7 @@ namespace wms_project
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(18, 211);
+            this.button4.Location = new System.Drawing.Point(21, 413);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(257, 42);
             this.button4.TabIndex = 16;
@@ -234,17 +241,45 @@ namespace wms_project
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(21, 413);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(257, 42);
+            this.button5.TabIndex = 17;
+            this.button5.Text = "Edit it!";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(18, 93);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown2.TabIndex = 18;
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
             this.idDataGridViewTextBoxColumn.HeaderText = "id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // jsonResultBindingSource
             // 
@@ -256,9 +291,7 @@ namespace wms_project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkKhaki;
             this.ClientSize = new System.Drawing.Size(938, 539);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.itemDescription);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.itemPrice);
             this.Controls.Add(this.button3);
@@ -271,12 +304,17 @@ namespace wms_project
             this.Controls.Add(this.ItemName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.itemDescription);
+            this.Controls.Add(this.button4);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminForm";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.jsonResultBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -304,5 +342,7 @@ namespace wms_project
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
     }
 }

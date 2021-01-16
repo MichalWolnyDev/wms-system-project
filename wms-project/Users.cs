@@ -8,11 +8,9 @@ using System.IO;
 
 namespace wms_project
 {
-    public class UserJson
-    {
-        [JsonProperty("users")]
-        public User User { get; set; }
-    }
+    /// <summary>
+    /// Konstruktory do stworzenia listy z uzytkownikami
+    /// </summary>
     public class User
     {
         [JsonProperty("id")]
@@ -27,9 +25,14 @@ namespace wms_project
     class Users
     {
 
-        //private readonly string _path = $"C:\\Users\\Majkelo\\source\\repos\\wms-proj\\wms-project\\users.json";
         private readonly string _path = @".\users.json";
 
+        /// <summary>
+        /// Odczyt uzytkownikow z pliku json
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="pwd"></param>
+        /// <returns></returns>
         public bool readUsers(string name, string pwd)
         {
             string jsonFromFile;
@@ -43,13 +46,6 @@ namespace wms_project
 
                 var userFromJson = JsonConvert.DeserializeObject<List<User>>(jsonFromFile);
 
-                Console.WriteLine(userFromJson.GetType());
-                //var test = userFromJson[0];
-                //Console.WriteLine(test.name);
-                //var test2 = userFromJson[1];
-                //Console.WriteLine(test2.name);
-                // Console.WriteLine(userFromJson);
-                //UserJson p1 = userFromJson[0];
 
                 // simple user validation
                 foreach (var item in userFromJson)

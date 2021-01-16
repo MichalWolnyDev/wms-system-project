@@ -17,12 +17,9 @@ namespace wms_project
 
         public Form2()
         {
-            
             this.Controls.Add(dataGridView1);
             InitializeComponent();
             InitializeDataGridView();
-
-
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -34,7 +31,11 @@ namespace wms_project
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
+        /// <summary>
+        /// Klikniecie na przycisk 'Add'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (label4.Visible == false) label4.Visible = true;
@@ -44,8 +45,10 @@ namespace wms_project
             if (label6.Visible == false) label6.Visible = true;
             if (itemDescription.Visible == false) itemDescription.Visible = true;
             numericUpDown1.Visible = false;
+            numericUpDown2.Visible = false;
             label1.Visible = false;
             button4.Visible = false;
+            button5.Visible = false;
 
             if (!string.IsNullOrWhiteSpace(ItemName.Text) && !string.IsNullOrWhiteSpace(itemPrice.Text) && !string.IsNullOrWhiteSpace(itemDescription.Text))
             {
@@ -62,6 +65,9 @@ namespace wms_project
         
         }
 
+        /// <summary>
+        /// Inicjalizacja widoku z danymi
+        /// </summary>
         private void InitializeDataGridView()
         {
             try
@@ -95,16 +101,6 @@ namespace wms_project
             System.Windows.Forms.Application.Exit();
         }
 
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            Console.WriteLine("nienawidze zycia");
-            //do your checks to see RowIndex is not -1 and other good stuffs
-            //var row = dataGridView1.Rows[e.RowIndex];
-           //// var changedValue = (string)row.Cells[e.ColumnIndex].Value;
-            //dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
-           // Console.WriteLine(changedValue);
-
-        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -130,21 +126,45 @@ namespace wms_project
 
         }
 
+        /// <summary>
+        /// Klikniecie na przycisk 'Edit'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            this.dataGridView1.EndEdit();
-            dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
-            dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
-            dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
+            if (label4.Visible == false) label4.Visible = true;
+            if (ItemName.Visible == false) ItemName.Visible = true;
+            if (label5.Visible == false) label5.Visible = true;
+            if (itemPrice.Visible == false) itemPrice.Visible = true;
+            if (label6.Visible == false) label6.Visible = true;
+            if (itemDescription.Visible == false) itemDescription.Visible = true;
+            if (button5.Visible == false) button5.Visible = true;
+            ItemName.Text = "";
+            itemPrice.Text = "";
+            itemDescription.Text = "";
+            numericUpDown1.Visible = false;
+            label1.Visible = true;
+            button4.Visible = false;
+            button5.Visible = true;
+            numericUpDown2.Visible = true;
+                                  
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
             numericUpDown1.Visible = false;
+            numericUpDown2.Visible = false;
             label1.Visible = false;
             button4.Visible = false;
+            button5.Visible = false;
         }
 
+        /// <summary>
+        /// Klikniecie na przycisk 'Delete'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             label4.Visible = false;
@@ -157,8 +177,10 @@ namespace wms_project
             itemDescription.Visible = false;
             itemDescription.Text = "";
             numericUpDown1.Visible = true;
+            numericUpDown2.Visible = false;
             label1.Visible = true;
             button4.Visible = true;
+            button5.Visible = false;
 
           
         }
@@ -168,18 +190,35 @@ namespace wms_project
 
         }
 
+        /// <summary>
+        /// Klikniecie na przycisk 'Delete it'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
             if (numericUpDown1.Value != null)
             {
                 int count = Convert.ToInt32(numericUpDown1.Value);
-                Console.WriteLine(count);
                 datamnp.removeData(count);
                 InitializeDataGridView();
                 MessageBox.Show("Przedmiot usunięty");
             }
         }
 
-   
+        /// <summary>
+        /// Klikniecie na przycisk 'Edit it'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (datamnp.editData(numericUpDown2.Value, ItemName.Text, itemPrice.Text, itemDescription.Text))
+            {
+                // refresh dataGrid after adding some item
+                InitializeDataGridView();
+                MessageBox.Show("Edycja zakonczona");
+            }
+        }
     }
 }

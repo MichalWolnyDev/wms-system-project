@@ -34,6 +34,11 @@ namespace wms_project
 
         }
 
+        /// <summary>
+        /// Klikniecie w przycisk 'Login'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
          
@@ -70,6 +75,11 @@ namespace wms_project
 
         }
 
+        /// <summary>
+        /// Pokazywanie/ukrywanie hasla
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             // toggle password visible
@@ -82,6 +92,11 @@ namespace wms_project
             }
         }
 
+        /// <summary>
+        /// Czyszczenie danych do logowania
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClearInputs_Click(object sender, EventArgs e)
         {
             // clear inputs

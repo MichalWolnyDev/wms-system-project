@@ -8,6 +8,9 @@ using System.IO;
 
 namespace wms_project
 {
+    /// <summary>
+    /// Konstruktory do stworzenia listy
+    /// </summary>
     public class Items
     {
         [JsonProperty("id")]
@@ -29,7 +32,9 @@ namespace wms_project
         }
 
     }
-
+    /// <summary>
+    /// Konstruktory do danych wynikowych
+    /// </summary>
     public class JsonResult 
     { 
         public int id { get; set; }
@@ -39,11 +44,14 @@ namespace wms_project
     }
     class DataManipulation
     {
-        //public string _path = $"C:\\Users\\Majkelo\\source\\repos\\wms-proj\\wms-project\\data.json";
         public string _path = @".\data.json";
 
-
-
+        /// <summary>
+        /// Dodawanie przedmiotow do bazy
+        /// </summary>
+        /// <param name="itemFromUser"></param>
+        /// <param name="itemPrice"></param>
+        /// <param name="itemDescription"></param>
         public void addData(string itemFromUser, string itemPrice, string itemDescription)
         {
             string jsonFromFile;
@@ -88,6 +96,11 @@ namespace wms_project
             }
         }
 
+
+        /// <summary>
+        /// Wyswietlanie danych
+        /// </summary>
+        /// <returns></returns>
         public List<JsonResult> displayData()
         {
             string jsonFromFile;
@@ -107,6 +120,54 @@ namespace wms_project
             }
         }
 
+        /// <summary>
+        ///  Edycja danych
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="itemFromUser"></param>
+        /// <param name="itemPrice"></param>
+        /// <param name="itemDescription"></param>
+        /// <returns></returns>
+        public bool editData(decimal id, string itemFromUser, string itemPrice, string itemDescription)
+        {
+            string jsonFromFile;
+            try
+            {
+                using (var reader = new StreamReader(_path))
+                {
+                    jsonFromFile = reader.ReadToEnd();
+                }
+
+                var result = JsonConvert.DeserializeObject<List<Items>>(jsonFromFile);
+
+              
+                    var itemToEdit = result.FirstOrDefault(r => r.id == id);
+                    if (itemToEdit != null)
+                        {
+                            if (itemFromUser != "") itemToEdit.name = itemFromUser;
+                            if (itemPrice != "") itemToEdit.price = itemPrice;
+                            if (itemDescription != "")itemToEdit.description = itemDescription;
+                        }
+              
+
+                var convertedJson = JsonConvert.SerializeObject(result, Formatting.Indented);
+
+                File.WriteAllText(_path, convertedJson);
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Usuwanie danych
+        /// </summary>
+        /// <param name="id"></param>
         public void removeData(int id)
         {
             string jsonFromFile;
@@ -118,6 +179,7 @@ namespace wms_project
                 }
 
                 var result = JsonConvert.DeserializeObject<List<JsonResult>>(jsonFromFile);
+                // delete item by id
                 var itemToRemove = result.SingleOrDefault(r => r.id == id);
                 if (itemToRemove != null)
                     result.Remove(itemToRemove);
