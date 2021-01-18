@@ -15,11 +15,22 @@ namespace wms_project
         Form2 DataManipulation;
         DataManipulation datamnp = new DataManipulation();
 
-        public Form2()
+        public Form2(string user)
         {
             this.Controls.Add(dataGridView1);
             InitializeComponent();
             InitializeDataGridView();
+
+            if(user == "Magazynier")
+            {
+                button3.Visible = false;
+                label2.Text = "WMS - Magazynier";
+            }
+            else
+            {
+                button3.Visible = true;
+                label2.Text = "WMS - Admin";
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)

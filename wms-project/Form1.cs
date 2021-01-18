@@ -48,11 +48,11 @@ namespace wms_project
             {
                 if (UsernameInput.Text == "Admin")
                 {
-                    new Form2().Show();
+                    new Form2("Admin").Show();
                 }
                 else if (UsernameInput.Text == "Magazynier")
                 {
-                    new Form3().Show();
+                    new Form2("Magazynier").Show();
                 }
                 this.Hide();
             }
