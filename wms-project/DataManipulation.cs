@@ -44,7 +44,8 @@ namespace wms_project
     }
     class DataManipulation
     {
-        public string _path = @".\data.json";
+        public string _path = @"..\..\DB\data.json";
+      
 
         /// <summary>
         /// Dodawanie przedmiotow do bazy

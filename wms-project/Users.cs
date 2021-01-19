@@ -25,7 +25,7 @@ namespace wms_project
     class Users
     {
 
-        private readonly string _path = @".\users.json";
+        private readonly string _path = @"..\..\DB\users.json";
 
         /// <summary>
         /// Odczyt uzytkownikow z pliku json
