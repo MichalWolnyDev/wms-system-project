@@ -4,17 +4,5 @@
     "name": "Opel",
     "price": "5000",
     "description": "Stan igla"
-  },
-  {
-    "id": 2,
-    "name": "ferrari",
-    "price": "231",
-    "description": "ads"
-  },
-  {
-    "id": 3,
-    "name": "mazda 323f",
-    "price": "34444",
-    "description": "asdasdas"
   }
 ]
